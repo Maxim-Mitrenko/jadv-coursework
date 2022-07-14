@@ -27,7 +27,7 @@ import java.util.stream.Stream;
 
 public class ClientTest {
 
-    private static final File file = new File("src\\main\\java\\client\\settings.txt");
+    private static final File file = new File("config\\client\\settings.txt");
     private static final ReadResult result = new Read(file).read();
     private StringBuilder sb;
     private ExecutorService executorService;

@@ -63,7 +63,7 @@ public class Server {
                 }
                 String message = new String(byteBuffer.array(), 0, bytesCount, StandardCharsets.UTF_8);
                 byteBuffer.clear();
-                log.log(LocalDateTime.now() + " " + message);
+                log.log(message);
                 executorService.execute(() -> sendMessage(socketChannel, message));
             }
         } catch (SocketException e) {

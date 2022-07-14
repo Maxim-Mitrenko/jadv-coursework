@@ -8,6 +8,7 @@ import java.nio.channels.ClosedByInterruptException;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -30,6 +31,7 @@ public class Client {
             ByteBuffer byteBuffer = ByteBuffer.allocate(2 << 10);
             output.accept("Введите ваше имя!");
             String name = input.get();
+            output.accept("Вы успешно подключились к чату!");
             Thread thread = new Thread(() -> read(byteBuffer, socketChannel));
             thread.start();
             write(socketChannel, name);
@@ -65,7 +67,7 @@ public class Client {
                         break;
                     }
                     log.log(LocalDateTime.now() + " " + msg);
-                    String send = String.format("%s: %s", name, msg);
+                    String send = String.format("%s %s: %s", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")), name, msg);
                     socketChannel.write(ByteBuffer.wrap(send.getBytes(StandardCharsets.UTF_8)));
                 }
             } catch (Throwable throwable) {

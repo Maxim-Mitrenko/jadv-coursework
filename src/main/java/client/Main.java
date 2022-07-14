@@ -11,9 +11,9 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static final File logFile = new File("src\\main\\java\\client\\file.log");
+    public static final File logFile = new File("logs\\client\\file.log");
     public static final Log log = new Logger(logFile);
-    public static final File settings = new File("src\\main\\java\\client\\settings.txt");
+    public static final File settings = new File("config\\client\\settings.txt");
     public static final Read read = new Read(settings, log);
     public static final ReadResult result = read.read();
 

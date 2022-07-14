@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 
 public class ServerTest {
 
-    private static final File file = new File("src\\main\\java\\client\\settings.txt");
+    private static final File file = new File("config\\server\\settings.txt");
     private static final ReadResult result = new Read(file).read();
     private ExecutorService executorService;
     private static final Server server = new Server(msg -> {});
